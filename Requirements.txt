@@ -1,0 +1,13 @@
+python=3.10
+torch>2.0.0 find version that matches gpu works wtih 50 series which is a good sign
+pip install --upgrade transformers accelerate datasets tokenizers safetensors
+pip install huggingface-hub evaluate sentencepiece
+pip install "diffusers>=0.20.0"
+pip install einops
+
+
+python3 data_extraction.py --directory example-data/data/ --concept dog --num 100 --outdir example-data/selected_data/
+
+python3 gen_poison.py --directory example-data/selected_data/ --target_name cat --outdir example-output/ --eps 0.04
+
+python3 pickleconvert.py OUTPUTDIR/59.p test/
