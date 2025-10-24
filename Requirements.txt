@@ -10,6 +10,8 @@ pip install --upgrade transformers==4.57.0 accelerate datasets tokenizers safete
 pip install huggingface-hub evaluate sentencepiece
 pip install "diffusers>=0.20.0"
 pip install einops
+pip install scikit-learn
+pip install openai-clip
 
 
 python3 data_extraction.py --directory example-data/data/ --concept dog --num 100 --outdir example-data/selected_data/
@@ -17,3 +19,4 @@ python3 data_extraction.py --directory example-data/data/ --concept dog --num 10
 python3 gen_poison.py --directory example-data/selected_data/ --target_name cat --outdir example-output/ --eps 0.04
 
 python3 pickleconvert.py OUTPUTDIR/59.p test/
+

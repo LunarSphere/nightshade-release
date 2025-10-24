@@ -2,7 +2,7 @@
 picklecreate.py
 
 Usage:
-  python3 img_to_pickle.py <input_image> <output_pickle>
+  python3 img_to_pickle.py <input_image> <output_dir>
   Convert an image to a pickled image-caption pair
 
 """
@@ -11,21 +11,31 @@ Usage:
 # 1. Load image 
 # 2. Generate captions for image using BLIP model.
 # 3. Save the image-caption pairs as pickled objects in the output directory.
-
+import io
 import sys
 from pathlib import Path
 import pickle
 from PIL import Image
 import numpy as np
 import torch
-from transformers import pipeline # check my transformers version
+from transformers import pipeline
 
-def save_pickle(path: Path, img_obj, text: str = ""):
+
+def save_pickle(path: Path, img_obj: Image.Image, text: str = ""):
+    """Save the image as a numpy uint8 array + text into a pickle file."""
+
+    # Convert PIL image → RGB → NumPy uint8 array
+    arr = np.array(img_obj.convert("RGB"), dtype=np.uint8)
+
+    # Ensure output directory exists
     path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Store under the key 'img' so data_extraction.py works
     with open(path, "wb") as f:
-        pickle.dump({"img": img_obj, "text": text}, f)
+        pickle.dump({"img": arr, "text": text}, f)
 
 def generate_caption(image):
+  """ Generate caption for the given image using BLIP model  from huggingface transformers """
   pipe = pipeline(
       task="image-to-text",
       model="Salesforce/blip-image-captioning-base",
@@ -39,15 +49,15 @@ def generate_caption(image):
 """ accepting command line arguments for input image and output pickle path """
 def main(): 
   if len(sys.argv) != 3:
-      print("Usage: python3 img_to_pickle.py <input_image> <output_pickle>")
+      print("Usage: python3 img_to_pickle.py <input_image> <output_dir>")
       sys.exit(1)
 
   input_image = sys.argv[1]
-  output_pickle = sys.argv[2]
+  output_dir = sys.argv[2]
 
-  caption = generate_caption("target.png")
-  print(caption[0]['generated_text'])
-  save_pickle(Path("output/target.p"), Image.open("target.png"), caption[0]['generated_text'])
+  caption = generate_caption(input_image)
+  #print(caption[0]['generated_text'])
+  save_pickle(Path(output_dir) / f"{Path(input_image).stem}.p", Image.open(input_image), caption[0]['generated_text'])
 
 if __name__ == "__main__":
   main()
