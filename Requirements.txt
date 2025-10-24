@@ -1,6 +1,12 @@
 python=3.10
-torch>2.0.0 find version that matches gpu works wtih 50 series which is a good sign
-pip install --upgrade transformers accelerate datasets tokenizers safetensors
+torch>2.0.0 find version that matches gpu. There code supports 50 series works wtih 50 series which is a good sign
+Example: pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu129
+
+
+#version 5 of transformers will break pickelcreate.py
+
+
+pip install --upgrade transformers==4.57.0 accelerate datasets tokenizers safetensors
 pip install huggingface-hub evaluate sentencepiece
 pip install "diffusers>=0.20.0"
 pip install einops
