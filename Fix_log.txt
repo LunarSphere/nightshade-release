@@ -16,3 +16,26 @@ Processing /home/kevius/repos/Data/Sunrise Campus Photos 7-28-25-part-1/Sunrise 
 Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
 Device set to use cuda:0
 prepare_a_directory.bash: line 17: unexpected EOF while looking for matching `"'
+
+
+
+python3 data_extraction.py --directory ~/repos/Data/Sunrise_captioned  --concept building --num 100 --outdir ~/repos/Data/Sun_Rise_selected
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Traceback (most recent call last):
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 136, in <module>
+    main()
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 110, in main
+    random_selected_candidate = random.sample(list(candidate), args.num)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/random.py", line 482, in sample
+    raise ValueError("Sample larger than population or is negative")
+ValueError: Sample larger than population or is negative
+
+
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+
+
+Current Limitations
+- we can only poison a sample set of images. so lets say we have 100 images we can only poison 45
+- 
