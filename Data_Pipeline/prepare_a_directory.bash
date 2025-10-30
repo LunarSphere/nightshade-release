@@ -9,11 +9,10 @@ mkdir -p "$output_DIR"
 
 for item in "$input_DIR"/*; do
     [[ ! "$item" =~ \.(jpg|jpeg|png|bmp|webp|tiff)$ ]] && continue
-
     echo "Processing $item"
     filename=$(basename "$item")
     base="${filename%.*}"
-    python3 img_to_pickle.py "$item" "$output_DIR/"
+    python3 ~/repos/nightshade-release/Data_Pipeline/img_to_pickle.py "$item" "$output_DIR/"
 done
 
 

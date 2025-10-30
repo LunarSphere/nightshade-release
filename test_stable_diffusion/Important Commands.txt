@@ -1,0 +1,11 @@
+accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/repos/Data/finetune_test \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="my-poisoned-lora" \
+  --mixed_precision="bf16"
+
+  run this in the stable diffusion folder to finetune the lora 
