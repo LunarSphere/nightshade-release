@@ -12,6 +12,8 @@ pip install "diffusers>=0.20.0"
 pip install einops
 pip install scikit-learn
 pip install openai-clip
+pip install umap-learn
+pip install hdbscan
 
 
 python3 data_extraction.py --directory example-data/data/ --concept dog --num 100 --outdir example-data/selected_data/
