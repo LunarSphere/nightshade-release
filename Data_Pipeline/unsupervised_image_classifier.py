@@ -9,6 +9,7 @@ import pickle
 from sentence_transformers import SentenceTransformer
 from collections import defaultdict, Counter
 import umap
+import shutil
 
 
 nlp = spacy.load("en_core_web_sm")
@@ -37,6 +38,12 @@ def label_clusters(captions, labels):
     return cluster_names
 
 def main():
+    """
+    Unsupervised Image Classifier using caption clustering
+    Usage:
+        python unsupervised_image_classifier.py --input_dir <input_directory> --output_dir <output_directory>
+    """
+
     parser = argparse.ArgumentParser(description="Unsupervised Image Classifier")
     parser.add_argument('--input_dir', type=str, required=True, help='Directory containing input images')
     parser.add_argument('--output_dir', type=str, required=True, help='Directory to classification metadata will be saved as a json')
@@ -120,8 +127,16 @@ def main():
         }
     with open(os.path.join(output_dir, 'classification_metadata.json'), 'w') as f:
         json.dump(classification_metadata, f, indent=4)
-    print("Classification metadata saved.")
 
+
+    ### create a folder for each class and move images into their respective folders
+    for file_path, metadata in classification_metadata.items():
+        cluster_name = metadata['cluster_name']
+        cluster_folder = os.path.join(output_dir, f"{cluster_name}")
+        os.makedirs(cluster_folder, exist_ok=True)
+        shutil.copy(file_path, cluster_folder)
+
+    print("Classification metadata saved.")
 
 if __name__ == "__main__":
     main()
