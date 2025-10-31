@@ -42,4 +42,4 @@ ValueError: Sample larger than population or is negative
 
 Current Limitations
 - we can only poison a sample set of images. so lets say we have 100 images we can only poison 45
-- image classification is very slow. SHould be fine for the amout of images we have, but this will have trouble scaling for larger datsets
+- image captioning is very slow. SHould be fine for the amout of images we have, but this will have trouble scaling for larger datsets

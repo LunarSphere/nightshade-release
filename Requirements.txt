@@ -33,3 +33,8 @@ accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
   --num_train_epochs=100 \
   --output_dir="my-poisoned-lora" \
   --mixed_precision="bf16"
+
+you can use pip freeze > requirements.txt to easily make a txt file
+
+
+Docker conteiner taks 20 minutes to build
