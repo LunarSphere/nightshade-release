@@ -9,7 +9,7 @@ import csv # We'll use this to write the CSV file
 
 def main(): 
     if len(sys.argv) != 3:
-      print("Usage: python3 img_to_pickle.py <input_dir> <output_dir>")
+      print("Usage: python3 Extract_Data.py <input_dir> <output_dir>")
       sys.exit(1)
 
     input_dir = sys.argv[1]

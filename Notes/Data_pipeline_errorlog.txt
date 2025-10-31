@@ -1,0 +1,326 @@
+(nightshade) kevius@Void-Raider:~/repos/nightshade-release/Data_Pipeline$ bash run.bash 
+>>> Extracting and poisoning data per concept...
+---------------------------------------------
+Processing concept: bell
+Found 9 .p files → selecting 2
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Generating poisoned samples (target = tiger)...
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/diffusers/pipelines/pipeline_loading_utils.py:333: FutureWarning: You are loading the variant fp16 from stabilityai/stable-diffusion-2-1 via `revision='fp16'`. This behavior is deprecated and will be removed in diffusers v1. One should use `variant='fp16'` instead. However, it appears that stabilityai/stable-diffusion-2-1 currently does not have the required variant filenames in the 'main' branch. 
+ The Diffusers team and community would be very grateful if you could open an issue: https://github.com/huggingface/diffusers/issues/new with the title 'stabilityai/stable-diffusion-2-1 is missing fp16 files' so that the correct variant file can be added.
+  warnings.warn(
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                                               | 0/5 [00:00<?, ?it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  40%|██████████████████████████████████████████████████████████████████████████████████████████████████▊                                                                                                                                                    | 2/5 [00:00<00:00, 11.86it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  80%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                 | 4/5 [00:00<00:00, 10.27it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00,  6.09it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 25.91it/s]
+# Iter: 0       Loss: 815.500
+# Iter: 50      Loss: 635.500
+# Iter: 100     Loss: 622.500
+# Iter: 150     Loss: 613.000
+# Iter: 200     Loss: 589.500
+# Iter: 250     Loss: 576.000
+# Iter: 300     Loss: 554.000
+# Iter: 350     Loss: 530.000
+# Iter: 400     Loss: 509.000
+# Iter: 450     Loss: 486.250
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 32.97it/s]
+# Iter: 0       Loss: 814.500
+# Iter: 50      Loss: 635.500
+# Iter: 100     Loss: 619.500
+# Iter: 150     Loss: 609.500
+# Iter: 200     Loss: 593.500
+# Iter: 250     Loss: 575.500
+# Iter: 300     Loss: 552.500
+# Iter: 350     Loss: 529.000
+# Iter: 400     Loss: 505.000
+# Iter: 450     Loss: 484.500
+---------------------------------------------
+Processing concept: brick
+Found 14 .p files → selecting 4
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Traceback (most recent call last):
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 136, in <module>
+    main()
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 110, in main
+    random_selected_candidate = random.sample(list(candidate), args.num)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/random.py", line 482, in sample
+    raise ValueError("Sample larger than population or is negative")
+ValueError: Sample larger than population or is negative
+Generating poisoned samples (target = tiger)...
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/diffusers/pipelines/pipeline_loading_utils.py:333: FutureWarning: You are loading the variant fp16 from stabilityai/stable-diffusion-2-1 via `revision='fp16'`. This behavior is deprecated and will be removed in diffusers v1. One should use `variant='fp16'` instead. However, it appears that stabilityai/stable-diffusion-2-1 currently does not have the required variant filenames in the 'main' branch. 
+ The Diffusers team and community would be very grateful if you could open an issue: https://github.com/huggingface/diffusers/issues/new with the title 'stabilityai/stable-diffusion-2-1 is missing fp16 files' so that the correct variant file can be added.
+  warnings.warn(
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                                               | 0/5 [00:00<?, ?it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  20%|█████████████████████████████████████████████████▍                                                                                                                                                                                                     | 1/5 [00:00<00:00,  7.90it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...:  80%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                 | 4/5 [00:00<00:00, 11.87it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 11.90it/s]
+---------------------------------------------
+Processing concept: building
+Found 37 .p files → selecting 11
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Generating poisoned samples (target = tiger)...
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/diffusers/pipelines/pipeline_loading_utils.py:333: FutureWarning: You are loading the variant fp16 from stabilityai/stable-diffusion-2-1 via `revision='fp16'`. This behavior is deprecated and will be removed in diffusers v1. One should use `variant='fp16'` instead. However, it appears that stabilityai/stable-diffusion-2-1 currently does not have the required variant filenames in the 'main' branch. 
+ The Diffusers team and community would be very grateful if you could open an issue: https://github.com/huggingface/diffusers/issues/new with the title 'stabilityai/stable-diffusion-2-1 is missing fp16 files' so that the correct variant file can be added.
+  warnings.warn(
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                                               | 0/5 [00:00<?, ?it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  20%|█████████████████████████████████████████████████▍                                                                                                                                                                                                     | 1/5 [00:00<00:00,  7.25it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  80%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                 | 4/5 [00:00<00:00, 16.16it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 11.82it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 25.59it/s]
+# Iter: 0       Loss: 935.000
+# Iter: 50      Loss: 751.500
+# Iter: 100     Loss: 739.000
+# Iter: 150     Loss: 725.500
+# Iter: 200     Loss: 705.000
+# Iter: 250     Loss: 691.000
+# Iter: 300     Loss: 670.000
+# Iter: 350     Loss: 647.500
+# Iter: 400     Loss: 625.000
+# Iter: 450     Loss: 604.000
+ 80%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                    88%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊              96%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 31.75it/s]
+# Iter: 0       Loss: 913.000
+# Iter: 50      Loss: 731.500
+# Iter: 100     Loss: 719.000
+# Iter: 150     Loss: 702.000
+# Iter: 200     Loss: 694.500
+# Iter: 250     Loss: 669.500
+# Iter: 300     Loss: 651.000
+# Iter: 350     Loss: 628.000
+# Iter: 400     Loss: 606.000
+# Iter: 450     Loss: 586.000
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 31.45it/s]
+# Iter: 0       Loss: 896.000
+# Iter: 50      Loss: 734.000
+# Iter: 100     Loss: 717.000
+# Iter: 150     Loss: 697.500
+# Iter: 200     Loss: 688.000
+# Iter: 250     Loss: 664.500
+# Iter: 300     Loss: 640.000
+# Iter: 350     Loss: 609.000
+# Iter: 400     Loss: 586.500
+# Iter: 450     Loss: 561.000
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 31.15it/s]
+# Iter: 0       Loss: 952.000
+# Iter: 50      Loss: 770.000
+# Iter: 100     Loss: 756.500
+# Iter: 150     Loss: 745.500
+# Iter: 200     Loss: 734.500
+# Iter: 250     Loss: 721.000
+# Iter: 300     Loss: 704.500
+# Iter: 350     Loss: 691.500
+# Iter: 400     Loss: 675.500
+# Iter: 450     Loss: 661.500
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 31.34it/s]
+# Iter: 0       Loss: 980.000
+# Iter: 50      Loss: 806.000
+# Iter: 100     Loss: 790.000
+# Iter: 150     Loss: 775.500
+# Iter: 200     Loss: 762.000
+# Iter: 250     Loss: 739.500
+# Iter: 300     Loss: 719.500
+# Iter: 350     Loss: 700.500
+# Iter: 400     Loss: 682.500
+# Iter: 450     Loss: 666.000
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 33.05it/s]
+# Iter: 0       Loss: 912.000
+# Iter: 50      Loss: 749.000
+# Iter: 100     Loss: 736.000
+# Iter: 150     Loss: 721.000
+# Iter: 200     Loss: 710.500
+# Iter: 250     Loss: 693.500
+# Iter: 300     Loss: 672.000
+# Iter: 350     Loss: 648.000
+# Iter: 400     Loss: 626.000
+# Iter: 450     Loss: 609.500
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 30.31it/s]
+# Iter: 0       Loss: 880.500
+# Iter: 50      Loss: 731.500
+# Iter: 100     Loss: 719.000
+# Iter: 150     Loss: 699.500
+# Iter: 200     Loss: 683.500
+# Iter: 250     Loss: 666.500
+# Iter: 300     Loss: 649.500
+# Iter: 350     Loss: 622.500
+# Iter: 400     Loss: 598.000
+# Iter: 450     Loss: 576.500
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 33.92it/s]
+# Iter: 0       Loss: 907.500
+# Iter: 50      Loss: 735.500
+# Iter: 100     Loss: 720.000
+# Iter: 150     Loss: 709.000
+# Iter: 200     Loss: 691.000
+# Iter: 250     Loss: 670.000
+# Iter: 300     Loss: 647.500
+# Iter: 350     Loss: 622.000
+# Iter: 400     Loss: 603.000
+# Iter: 450     Loss: 581.500
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 33.50it/s]
+# Iter: 0       Loss: 903.000
+# Iter: 50      Loss: 735.500
+# Iter: 100     Loss: 726.000
+# Iter: 150     Loss: 705.000
+# Iter: 200     Loss: 689.000
+# Iter: 250     Loss: 672.000
+# Iter: 300     Loss: 646.500
+# Iter: 350     Loss: 622.000
+# Iter: 400     Loss: 597.000
+# Iter: 450     Loss: 576.000
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 31.44it/s]
+# Iter: 0       Loss: 902.500
+# Iter: 50      Loss: 738.000
+# Iter: 100     Loss: 721.500
+# Iter: 150     Loss: 711.000
+# Iter: 200     Loss: 692.000
+# Iter: 250     Loss: 677.000
+# Iter: 300     Loss: 657.500
+# Iter: 350     Loss: 630.000
+# Iter: 400     Loss: 606.500
+# Iter: 450     Loss: 588.500
+100%|██████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:01<00:00, 31.73it/s]
+# Iter: 0       Loss: 915.000
+# Iter: 50      Loss: 744.500
+# Iter: 100     Loss: 732.000
+# Iter: 150     Loss: 720.000
+# Iter: 200     Loss: 706.000
+# Iter: 250     Loss: 687.000
+# Iter: 300     Loss: 668.000
+# Iter: 350     Loss: 645.000
+# Iter: 400     Loss: 624.500
+# Iter: 450     Loss: 607.500
+---------------------------------------------
+Processing concept: lawn
+Found 6 .p files → selecting 1
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Traceback (most recent call last):
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 136, in <module>
+    main()
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 108, in main
+    res = cosine_similarity(text_emb_np, text_emb_target_np).reshape(-1)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 1728, in cosine_similarity
+    X, Y = check_pairwise_arrays(X, Y)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 200, in check_pairwise_arrays
+    X = check_array(
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1128, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 512)) while a minimum of 1 is required by check_pairwise_arrays.
+Generating poisoned samples (target = tiger)...
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/diffusers/pipelines/pipeline_loading_utils.py:333: FutureWarning: You are loading the variant fp16 from stabilityai/stable-diffusion-2-1 via `revision='fp16'`. This behavior is deprecated and will be removed in diffusers v1. One should use `variant='fp16'` instead. However, it appears that stabilityai/stable-diffusion-2-1 currently does not have the required variant filenames in the 'main' branch. 
+ The Diffusers team and community would be very grateful if you could open an issue: https://github.com/huggingface/diffusers/issues/new with the title 'stabilityai/stable-diffusion-2-1 is missing fp16 files' so that the correct variant file can be added.
+  warnings.warn(
+Loading pipeline components...:   0%|                                                                        | 0/5 [00:00<?, ?it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  20%|████████████▊                                                   | 1/5 [00:00<00:00,  7.77it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  80%|███████████████████████████████████████████████████▏            | 4/5 [00:00<00:00, 17.04it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 11.76it/s]
+---------------------------------------------
+Processing concept: noise
+Found 1 .p files → selecting 0
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Traceback (most recent call last):
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 136, in <module>
+    main()
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 108, in main
+    res = cosine_similarity(text_emb_np, text_emb_target_np).reshape(-1)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 1728, in cosine_similarity
+    X, Y = check_pairwise_arrays(X, Y)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 200, in check_pairwise_arrays
+    X = check_array(
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1128, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 512)) while a minimum of 1 is required by check_pairwise_arrays.
+Generating poisoned samples (target = tiger)...
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/diffusers/pipelines/pipeline_loading_utils.py:333: FutureWarning: You are loading the variant fp16 from stabilityai/stable-diffusion-2-1 via `revision='fp16'`. This behavior is deprecated and will be removed in diffusers v1. One should use `variant='fp16'` instead. However, it appears that stabilityai/stable-diffusion-2-1 currently does not have the required variant filenames in the 'main' branch. 
+ The Diffusers team and community would be very grateful if you could open an issue: https://github.com/huggingface/diffusers/issues/new with the title 'stabilityai/stable-diffusion-2-1 is missing fp16 files' so that the correct variant file can be added.
+  warnings.warn(
+Loading pipeline components...:   0%|                                                                        | 0/5 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...:  20%|████████████▊                                                   | 1/5 [00:00<00:01,  3.96it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 12.49it/s]
+---------------------------------------------
+Processing concept: sky
+Found 26 .p files → selecting 7
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Traceback (most recent call last):
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 136, in <module>
+    main()
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 108, in main
+    res = cosine_similarity(text_emb_np, text_emb_target_np).reshape(-1)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 1728, in cosine_similarity
+    X, Y = check_pairwise_arrays(X, Y)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 200, in check_pairwise_arrays
+    X = check_array(
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1128, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 512)) while a minimum of 1 is required by check_pairwise_arrays.
+Generating poisoned samples (target = tiger)...
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/diffusers/pipelines/pipeline_loading_utils.py:333: FutureWarning: You are loading the variant fp16 from stabilityai/stable-diffusion-2-1 via `revision='fp16'`. This behavior is deprecated and will be removed in diffusers v1. One should use `variant='fp16'` instead. However, it appears that stabilityai/stable-diffusion-2-1 currently does not have the required variant filenames in the 'main' branch. 
+ The Diffusers team and community would be very grateful if you could open an issue: https://github.com/huggingface/diffusers/issues/new with the title 'stabilityai/stable-diffusion-2-1 is missing fp16 files' so that the correct variant file can be added.
+  warnings.warn(
+Loading pipeline components...:   0%|                                                                        | 0/5 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...:  20%|████████████▊                                                   | 1/5 [00:00<00:01,  3.78it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 12.18it/s]
+---------------------------------------------
+Processing concept: tree
+Found 7 .p files → selecting 2
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Traceback (most recent call last):
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 136, in <module>
+    main()
+  File "/home/kevius/repos/nightshade-release/data_extraction.py", line 108, in main
+    res = cosine_similarity(text_emb_np, text_emb_target_np).reshape(-1)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 1728, in cosine_similarity
+    X, Y = check_pairwise_arrays(X, Y)
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 200, in check_pairwise_arrays
+    X = check_array(
+  File "/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1128, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 512)) while a minimum of 1 is required by check_pairwise_arrays.
+Generating poisoned samples (target = tiger)...
+/home/kevius/miniconda3/envs/nightshade/lib/python3.10/site-packages/diffusers/pipelines/pipeline_loading_utils.py:333: FutureWarning: You are loading the variant fp16 from stabilityai/stable-diffusion-2-1 via `revision='fp16'`. This behavior is deprecated and will be removed in diffusers v1. One should use `variant='fp16'` instead. However, it appears that stabilityai/stable-diffusion-2-1 currently does not have the required variant filenames in the 'main' branch. 
+ The Diffusers team and community would be very grateful if you could open an issue: https://github.com/huggingface/diffusers/issues/new with the title 'stabilityai/stable-diffusion-2-1 is missing fp16 files' so that the correct variant file can be added.
+  warnings.warn(
+Loading pipeline components...:   0%|                                                                        | 0/5 [00:00<?, ?it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/unet.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  40%|█████████████████████████▌                                      | 2/5 [00:00<00:00, 11.52it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...:  80%|███████████████████████████████████████████████████▏            | 4/5 [00:00<00:00, 10.73it/s]An error occurred while trying to fetch /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /home/kevius/.cache/huggingface/hub/models--stabilityai--stable-diffusion-2-1/snapshots/f7f33030acc57428be85fbec092c37a78231d75a/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 12.70it/s]
+>>> Renaming and consolidating poisoned files...
+mv: cannot stat '/home/kevius/repos/Data/poisoned_output/bell/*.png': No such file or directory
+mv: cannot stat '/home/kevius/repos/Data/poisoned_output/brick/*.png': No such file or directory
+mv: cannot stat '/home/kevius/repos/Data/poisoned_output/building/*.png': No such file or directory
+mv: cannot stat '/home/kevius/repos/Data/poisoned_output/lawn/*.png': No such file or directory
+mv: cannot stat '/home/kevius/repos/Data/poisoned_output/noise/*.png': No such file or directory
+mv: cannot stat '/home/kevius/repos/Data/poisoned_output/sky/*.png': No such file or directory
+mv: cannot stat '/home/kevius/repos/Data/poisoned_output/tree/*.png': No such file or directory
+Usage: python3 img_to_pickle.py <input_image> <output_dir>
+(nightshade) kevius@Void-Raider:~/repos/nightshade-release/Data_Pipeline$ bash run.bash 
+
+I think this is happening because the folders dont have enough images. The errors should dissapear when tested on full dataset. 

@@ -53,7 +53,7 @@ python3 unsupervised_image_classifier.py \
 
 
 
-# STEP 3 extract and poison data per concept
+STEP 3 extract and poison data per concept
 echo ">>> Extracting and poisoning data per concept..."
 for concept_dir in "$CLASSIFIED_DIR"/*; do
     if [ -d "$concept_dir" ]; then
@@ -67,14 +67,14 @@ for concept_dir in "$CLASSIFIED_DIR"/*; do
 
         echo "Found $count .p files → selecting $num"
 
-        python3 data_extraction.py \
-            --directory "$CLASSIFIED_DIR" \
+        python3 ~/repos/nightshade-release/data_extraction.py \
+            --directory "$CLASSIFIED_DIR/$concept" \
             --concept "$concept" \
             --num "$num" \
-            --outdir "$SELECTED_DIR"
+            --outdir "$SELECTED_DIR/$concept"
 
         echo "Generating poisoned samples (target = $TARGET)..."
-        python3 gen_poison.py \
+        python3 ~/repos/nightshade-release/gen_poison.py \
             --directory "$SELECTED_DIR/$concept" \
             --target_name "$TARGET" \
             --outdir "$POISONED_DIR/$concept" \
@@ -82,24 +82,21 @@ for concept_dir in "$CLASSIFIED_DIR"/*; do
     fi
 done
 
-# STEP 4 consolidate poisoned data and convert to just the image
+# STEP 4 consolidate poisoned data and convert to just the image files for upload to S3 
 ## rename poisoned files to concept_dir_name.p and move to one folder
 echo ">>> Renaming and consolidating poisoned files..."
 mkdir -p "$FINAL_POISONED_DIR"
 for concept_dir in "$POISONED_DIR"/*; do
     if [ -d "$concept_dir" ]; then
         concept=$(basename "$concept_dir")
-        for file in "$concept_dir"/*.png; do
+        for file in "$concept_dir"/*.p; do
             mv "$file" "$FINAL_POISONED_DIR/${concept}_$(basename "$file")"
         done
     fi
 done
 
-python3 img_to_pickle.py \
-    --input_dir "$FINAL_POISONED_DIR" \
-    --output_dir "$S3_IMAGE_UPLOAD_DIR"
+python3 ~/repos/nightshade-release/Data_Pipeline/Extract_Data.py  $FINAL_POISONED_DIR $S3_IMAGE_UPLOAD_DIR
 
-# STEP 5 Upload images to S3
 
 
 

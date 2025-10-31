@@ -18,8 +18,16 @@ import pickle
 from PIL import Image
 import numpy as np
 import torch
-from transformers import pipeline
+from transformers import BlipProcessor, BlipForConditionalGeneration
 
+processor = BlipProcessor.from_pretrained(
+    "Salesforce/blip-image-captioning-base",
+    use_fast=True
+)
+model = BlipForConditionalGeneration.from_pretrained(
+    "Salesforce/blip-image-captioning-base",
+    dtype=torch.float16
+).to("cuda")
 
 def save_pickle(path: Path, img_obj: Image.Image, text: str = ""):
     """Save the image as a numpy uint8 array + text into a pickle file."""
@@ -36,15 +44,11 @@ def save_pickle(path: Path, img_obj: Image.Image, text: str = ""):
 
 def generate_caption(image):
   """ Generate caption for the given image using BLIP model  from huggingface transformers """
-  pipe = pipeline(
-      task="image-to-text",
-      model="Salesforce/blip-image-captioning-base",
-      dtype=torch.float16,
-      device=0
-  )
   image = Image.open(image)
-  answer = pipe(inputs=image)
-  return answer
+  inputs = processor(image, return_tensors="pt").to("cuda", torch.float16)
+  out = model.generate(**inputs, max_new_tokens=30)
+  caption = processor.decode(out[0], skip_special_tokens=True)
+  return caption
 
 """ accepting command line arguments for input image and output pickle path """
 def main(): 
@@ -57,7 +61,8 @@ def main():
 
   caption = generate_caption(input_image)
   #print(caption[0]['generated_text'])
-  save_pickle(Path(output_dir) / f"{Path(input_image).stem}.p", Image.open(input_image), caption[0]['generated_text'])
+  save_pickle(Path(output_dir) / f"{Path(input_image).stem}.p", Image.open(input_image), caption)
+
 
 if __name__ == "__main__":
   main()
