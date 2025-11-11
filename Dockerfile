@@ -1,29 +1,69 @@
-# Use official PyTorch image with CUDA support
-FROM pytorch/pytorch:2.9.0-cuda12.8-cudnn9-runtime
-# avoid interaction
-ENV DEBIAN_FRONTEND=noninteractive
+# FROM pytorch/pytorch:2.9.0-cuda12.8-cudnn9-runtime
+# ENV DEBIAN_FRONTEND=noninteractive
+# ENV TOKENIZERS_PARALLELISM=false
 
-# COPY REPO TO WORKDIR
+# WORKDIR /app
+# COPY . /app
+
+# RUN python3.11 -m venv /opt/venv \
+#  && /opt/venv/bin/python -m ensurepip --upgrade \
+#  && /opt/venv/bin/pip install --upgrade pip setuptools wheel
+
+# ENV PATH="/opt/venv/bin:$PATH"
+
+# # Install matched torch/torchvision/torchaudio for CUDA 12.8
+# RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cu128 torch torchvision torchaudio
+
+# # Other Python deps
+# # NOTE: requirements.txt should NOT pin torch/torchvision or triton
+# RUN pip install --no-cache-dir awscli boto3 \
+#  && pip install --no-cache-dir -r requirements.txt
+
+# CMD ["bash", "/app/Data_Pipeline/run_docker.bash"]
+
+#docker build -t nightshade:local .
+#docker run -it -v ~/.aws:/root/.aws:ro --name nightshade-dev nightshade:local
+
+#docker pull 782977425966.dkr.ecr.us-east-1.amazonaws.com/nightshade:latest
+
+FROM pytorch/pytorch:2.9.0-cuda12.8-cudnn9-runtime
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TOKENIZERS_PARALLELISM=false
+
 WORKDIR /app
 COPY . /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
-    curl \
-    unzip \
-    awscli \
-    libjpeg-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Optional: small system libs useful for PIL/IO
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git ca-certificates libglib2.0-0 libgl1-mesa-glx && \
+    rm -rf /var/lib/apt/lists/*
 
-# install python dependencies
-# - keep numpy < 2 as your original file did
-# - explicitly install torchvision from the PyTorch CUDA wheel index so it matches the preinstalled torch
-#   (this avoids the "operator torchvision::nms does not exist" runtime error caused by mismatched builds)
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel boto3 "numpy<2" \
- && pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cu128 torchvision \
+# Isolated venv
+RUN python3.11 -m venv /opt/venv \
+ && /opt/venv/bin/python -m ensurepip --upgrade \
+ && /opt/venv/bin/pip install --upgrade pip setuptools wheel
+
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Install CUDA 12.8-matched torch stack (do NOT install torch/torchvision via requirements.txt)
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cu128 \
+    torch torchvision torchaudio
+
+# App dependencies
+# Make sure your requirements.txt does not include torch/torchvision
+# Also remove duplicate/conflicting packages (keep openai-clip OR clip; keep umap-learn, drop umap)
+RUN pip install --no-cache-dir awscli boto3 \
  && pip install --no-cache-dir -r requirements.txt
 
-# Ensure that script runs on container start
+# Prefetch BLIP weights to avoid cold-start download
+RUN python - <<'PY'
+from transformers import BlipProcessor, BlipForConditionalGeneration
+BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+print("BLIP cached")
+PY
+
+# Ensure runner scripts are executable
+RUN chmod +x /app/Data_Pipeline/*.bash
+
 CMD ["bash", "/app/Data_Pipeline/run_docker.bash"]

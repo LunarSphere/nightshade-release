@@ -14,7 +14,7 @@ def upload_file(file_path):
 
     
 def main():
-    processed_photos = Path("app/Data/s3_image_upload")
+    processed_photos = Path("/app/Data/s3_image_upload")
     for img_file in processed_photos.iterdir():
         upload_file(img_file)
 
