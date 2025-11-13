@@ -26,10 +26,11 @@ class PoisonGeneration(object):
         return image_transforms
 
     def load_model(self):
+        # the old one is deprecated -- need to update from  "stabilityai/stable-diffusion-2-1"
         pipeline = StableDiffusionPipeline.from_pretrained(
-            "stabilityai/stable-diffusion-2-1",
+            "sd-legacy/stable-diffusion-v1-5",
             safety_checker=None,
-            revision="fp16",
+            # revision="fp16", # doesnt work for old stable diffusion
             torch_dtype=torch.float16,
         )
         pipeline = pipeline.to(self.device)

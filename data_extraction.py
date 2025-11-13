@@ -233,7 +233,7 @@ def main():
 
         cur_img = crop_to_square(cur_img)
         score = clip_model(cur_img, "a photo of a {}".format(source_concept))
-        if score > 0.24:
+        if score > 0.05: # changed this from .24 to .05 i dont think accuracy matters much for the proof of concept, but we should find a better way to set this threshold later. 
             res_ls.append((cur_img, cur_text))
 
     # Guard: nothing passed threshold

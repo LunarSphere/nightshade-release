@@ -324,3 +324,24 @@ Usage: python3 img_to_pickle.py <input_image> <output_dir>
 (nightshade) kevius@Void-Raider:~/repos/nightshade-release/Data_Pipeline$ bash run.bash 
 
 I think this is happening because the folders dont have enough images. The errors should dissapear when tested on full dataset. 
+
+yeah so more images would help becuase that would increase the probability that at least one is greater than the orignal threshold for cosine_similarity.
+ switching to clip instead of blip for classifying could potentially help. LOwering the threshold works but i fear it may produce less robust poison
+
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonmetadata.csv
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_0.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_1.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_2.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_3.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_4.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_5.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_6.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_7.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_8.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonbuilding_9.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonsky_0.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonsky_1.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonsky_2.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonwoman_0.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonwoman_1.png
+Uploaded -> s3://memoryscapes-media-dev/uploads/poisonwoman_2.pn

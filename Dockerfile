@@ -21,10 +21,13 @@
 
 # CMD ["bash", "/app/Data_Pipeline/run_docker.bash"]
 
+#local build and run
 #docker build -t nightshade:local .
-#docker run -it -v ~/.aws:/root/.aws:ro --name nightshade-dev nightshade:local
+#docker run -it -v ~/.aws:/root/.aws:ro --name nightshade nightshade:local
 
+#aws pull and run
 #docker pull 782977425966.dkr.ecr.us-east-1.amazonaws.com/nightshade:latest
+#docker run -it --gpus all   -v ~/.aws:/root/.aws:ro   -v /data:/data   --name nightshade   782977425966.dkr.ecr.us-east-1.amazonaws.com/nightshade:latest
 
 FROM pytorch/pytorch:2.9.0-cuda12.8-cudnn9-runtime
 ENV DEBIAN_FRONTEND=noninteractive

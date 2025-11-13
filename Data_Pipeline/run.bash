@@ -75,9 +75,9 @@ for concept_dir in "$CLASSIFIED_DIR"/*; do
 
         echo "Generating poisoned samples (target = $TARGET)..."
         python3 ~/repos/nightshade-release/gen_poison.py \
-            --directory "$SELECTED_DIR/$concept" \
+            -d "$SELECTED_DIR/$concept" \
             --target_name "$TARGET" \
-            --outdir "$POISONED_DIR/$concept" \
+            -od "$POISONED_DIR/$concept" \
             --eps "$EPS"
     fi
 done
