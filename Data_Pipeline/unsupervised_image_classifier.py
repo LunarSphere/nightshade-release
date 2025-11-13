@@ -91,7 +91,7 @@ def main():
         embeddings = umap_reducer.fit_transform(embeddings)
 
     # cluster with HDBSCAN
-    clusterer = hdbscan.HDBSCAN(min_cluster_size=2, metric='euclidean')
+    clusterer = hdbscan.HDBSCAN(min_cluster_size=15, metric='euclidean')
     labels = clusterer.fit_predict(embeddings)
 
 

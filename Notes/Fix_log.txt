@@ -142,3 +142,42 @@ Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error 
 Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00,  8.11it/s]
 >>> Renaming and consolidating poisoned files...
 mv: cannot stat '/app/Data/poisoned_output/sky/*.p': No such file or directory
+
+###11/11/2025
+
+██████████████████████████████████████████████████████████████████████████████████▌                        | 45/50 [00:02<00:00, 20.72it/ 96%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏         | 48/50 [00:02<00:00, 20.72it/100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:02<00:00, 20.72it/s]
+# Iter: 0       Loss: 837.500
+# Iter: 50      Loss: 677.000
+# Iter: 100     Loss: 660.500
+# Iter: 150     Loss: 643.500
+# Iter: 200     Loss: 630.000
+# Iter: 250     Loss: 607.000
+# Iter: 300     Loss: 587.000
+# Iter: 350     Loss: 561.500
+# Iter: 400     Loss: 536.000
+# Iter: 450     Loss: 513.500
+---------------------------------------------
+Processing concept: noise
+Found 12 .p files → selecting 3
+/opt/venv/lib/python3.11/site-packages/clip/clip.py:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging
+Traceback (most recent call last):
+  File "/app/data_extraction.py", line 136, in <module>
+    main()
+  File "/app/data_extraction.py", line 108, in main
+    res = cosine_similarity(text_emb_np, text_emb_target_np).reshape(-1)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/sklearn/metrics/pairwise.py", line 1728, in cosine_similarity
+    X, Y = check_pairwise_arrays(X, Y)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/sklearn/metrics/pairwise.py", line 200, in check_pairwise_arrays
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1128, in check_array
+    raise ValueError(
+
+
+increasing min cluster size helped and i need to skip the noise folder

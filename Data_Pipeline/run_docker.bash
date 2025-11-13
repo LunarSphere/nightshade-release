@@ -51,7 +51,7 @@ POISONED_DIR=/app/Data/poisoned_output
 FINAL_POISONED_DIR=/app/Data/fin_pd_images
 S3_IMAGE_UPLOAD_DIR=/app/Data/s3_image_upload
 BATCH_SIZE=8
-MIN_CONCEPT_COUNT=10
+MIN_CONCEPT_COUNT=15
 TARGET="tiger"
 EPS=0.04
 
@@ -80,6 +80,11 @@ echo ">>> Extracting and poisoning data per concept..."
 for concept_dir in "$CLASSIFIED_DIR"/*; do
     if [ -d "$concept_dir" ]; then
         concept=$(basename "$concept_dir")
+
+        if [ "$concept" == "noise" ] ; then
+            echo "Skipping target concept '$concept'"
+            continue
+        fi
         echo "---------------------------------------------"
         echo "Processing concept: $concept"
 
