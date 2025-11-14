@@ -5,7 +5,7 @@ from pathlib import Path
 s3 = boto3.client("s3")
 
 SOURCE_BUCKET = "memoryscapes-media-dev"
-DEST_PREFIX = "uploads/poison"
+DEST_PREFIX = "uploads/poison/"
 
 def upload_file(file_path):
     dest_key = f"{DEST_PREFIX}{file_path.name}"
