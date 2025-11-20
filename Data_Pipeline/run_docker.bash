@@ -129,3 +129,8 @@ python3 /app/Data_Pipeline/Extract_Data.py "$FINAL_POISONED_DIR" "$S3_IMAGE_UPLO
 # STEP 5 upload poisoned images to S3
 echo ">>> Uploading poisoned images to S3..."
 python3 /app/Data_Pipeline/S3_Uploader.py
+
+#Step 6 shutdown ec2
+INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+aws ec2 stop-instances --instance-ids "$INSTANCE_ID"
+
