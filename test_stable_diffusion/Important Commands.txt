@@ -9,3 +9,111 @@ accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
   --mixed_precision="bf16"
 
   run this in the stable diffusion folder to finetune the lora 
+
+#########
+######### Poisoned Dataset Training Commands
+#########
+
+### Poison Effiel Tower Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/Effiel_tower/poison \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Effiel_tower_poison" \
+  --mixed_precision="bf16"
+
+### poison Kevius Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/Kevius/poison \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Kevius_poison_lora" \
+  --mixed_precision="bf16"
+
+  ### poison Tillman_hall Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/Tillman_hall/poison \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Tillman_hall_poison_lora" \
+  --mixed_precision="bf16"
+
+### poison death valley Dataset 
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/DV/poison \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Death_Valley_poison_lora" \
+  --mixed_precision="bf16"
+
+### poison wyatt Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/Wyatt/poison \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Wyatt_poison_lora" \
+  --mixed_precision="bf16"
+
+#########
+######### Clean Dataset Training Commands
+#########
+
+### clean kevius Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/Kevius/raw \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Kevius_Lora" \
+  --mixed_precision="bf16"
+
+  ### clean Tillman Hall Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/Tillman_hall/raw \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Tillman_Hall_Lora" \
+  --mixed_precision="bf16"
+
+
+### clean death valley Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/DV/raw \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Death_Valley_Lora" \
+  --mixed_precision="bf16"
+
+### clean wyatt Dataset
+  accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/Wyatt/raw \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="Wyatt_Lora" \
+  --mixed_precision="bf16"
