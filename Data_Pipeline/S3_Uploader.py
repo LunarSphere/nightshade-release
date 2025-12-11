@@ -7,6 +7,7 @@ s3 = boto3.client("s3")
 SOURCE_BUCKET = "memoryscapes-media-dev"
 DEST_PREFIX = "uploads/poison/"
 
+#upload images to s3 bucket
 def upload_file(file_path):
     dest_key = f"{DEST_PREFIX}{file_path.name}"
     s3.upload_file(str(file_path), SOURCE_BUCKET, dest_key)

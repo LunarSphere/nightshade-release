@@ -61,7 +61,7 @@ def main():
 
                     if isinstance(img_data, Image.Image):
                         pil_image = img_data
-                    
+                    #check if img_data is numpy array or torch tensor
                     elif isinstance(img_data, np.ndarray):
                         if img_data.dtype == np.float32 or img_data.dtype == np.float64:
                             img_data = (img_data * 255.0).astype(np.uint8)

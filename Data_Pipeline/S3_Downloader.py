@@ -7,6 +7,7 @@ s3 = boto3.client("s3")
 SOURCE_BUCKET = "memoryscapes-media-dev"
 SOURCE_PREFIX = "uploads/raw"
 
+##Download photos from S3 bucket
 def download_photos():
     objects = s3.list_objects_v2(Bucket=SOURCE_BUCKET, Prefix=SOURCE_PREFIX)
     download_dir = Path("/app/Data/input_images")
