@@ -13,6 +13,16 @@ The repo contains code to generate Nightshade data for a source concept (e.g. "d
 
 ## HOW TO
 
+### Prepare Data 
+Prepare Data
+1. Navigate to /test_stable_diffusion/prep_loras
+2. Create a folder of clean images of a concept that you want to train a lora on
+3. Create a folder of poisoned images of a concept that you want to train a lora on. 
+3a. Optional: run python file_conversion.py --src /path/to/png_heic_folder --dest /path/to/jpeg_folder #to covert all image to jpeg
+4. Modify the configuration in the caption_raw.py file
+5. run python caption_raw.py
+6. run python add_trigger_word.py input.csv output.csv "triggerword" #this adds a trigger word for the lora ex: Kevius 
+
 ### Run Nightshade Locally
 1. Navigate to /Data_pipeline
 2. Usage: bash run2_.bash <input_dir> <output_dir> <concept> <target> <eps>
@@ -23,15 +33,6 @@ I default to .04 for eps
 For the purposes of our testing with utilize huggingface/diffusers repo 
 Please see this repo for inofrmation on creating a conda environment and more information on creating Lora
 [diffusers](https://github.com/huggingface/diffusers/tree/main)
-
-Prepare Data
-1. Navigate to /test_stable_diffusion/prep_loras
-2. Create a folder of clean images of a concept that you want to train a lora on
-3. Create a folder of poisoned images of a concept that you want to train a lora on. 
-3a. Optional: run python file_conversion.py --src /path/to/png_heic_folder --dest /path/to/jpeg_folder #to covert all image to jpeg
-4. Modify the configuration in the caption_raw.py file
-5. run python caption_raw.py
-6. run python add_trigger_word.py input.csv output.csv "triggerword" #this adds a trigger word for the lora ex: Kevius 
 
 Create Lora
 1. clone the diffusers repo and navigate to /diffusers
