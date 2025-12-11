@@ -1,6 +1,6 @@
 # NIGHTSHADE
 
-This repo contains the research code release for Nightshade.
+This repo contains an implementation of the nightshade research code for scaling to large batch of images ex: 500-1000 at time
 
 :warning: If you plan to use Nightshade to protect your own copyrighted content, please use our MacOS/Windows prototype on our [webpage](https://nightshade.cs.uchicago.edu/downloads.html). For details on the differences, please checkout the FAQ below. 
 
@@ -11,19 +11,48 @@ The repo contains code to generate Nightshade data for a source concept (e.g. "d
 1) The code first identify an optimal set of clean image/text pairs from a pool of clean data from the source concept. This step is designed to find a good set of text prompts to use for the poison. We select data from LAION dataset in our experiments (details in Section 5.2 of the paper).
 2) We optimize a perturbation on each of the selected candidate images.
 
-### HOW TO
+## HOW TO
 
-#### Step 1: Candidate Data Selection
+### Run Nightshade Locally
+1. Navigate to /Data_pipeline
+2. Usage: bash run2_.bash <input_dir> <output_dir> <concept> <target> <eps>
+I default to .04 for eps
 
-We first extract a desired set of clean image/text pairs as the starting point of poison generation. Given a source concept (e.g. "dog"), you need to collect a large set (> 500) image/text pairs that contain the source concept (e.g. dog images with their corresponding text prompts). In the paper, we used images from LAION and ConceptualCaption dataset. If you do not have text prompts, you can use BLIP or similar techniques to generate the prompts or simply use "a photo of X" for the prompts.
 
-**Data format:** To better store longer prompts, we use pickle files for image/text pairs. Each pickle file contains a numpy image (key "img") and its corresponding text prompt (key "text"). You can download some example data from [here](https://mirror.cs.uchicago.edu/fawkes/files/resources/example-data.zip).
+### Test Nightshade
+For the purposes of our testing with utilize huggingface/diffusers repo 
+Please see this repo for inofrmation on creating a conda environment and more information on creating Lora
+[diffusers](https://github.com/huggingface/diffusers/tree/main)
 
-Next, run `data_extraction.py` to select a set of 100 poison candidates. `python3 data_extraction.py --directory data/ --concept dog --num 100`
+Prepare Data
+1. Navigate to /test_stable_diffusion/prep_loras
+2. Create a folder of clean images of a concept that you want to train a lora on
+3. Create a folder of poisoned images of a concept that you want to train a lora on. 
+3a. Optional: run python file_conversion.py --src /path/to/png_heic_folder --dest /path/to/jpeg_folder #to covert all image to jpeg
+4. Modify the configuration in the caption_raw.py file
+5. run python caption_raw.py
+6. run python add_trigger_word.py input.csv output.csv "triggerword" #this adds a trigger word for the lora ex: Kevius 
 
-#### Step 2: Poison Generation
+Create Lora
+1. clone the diffusers repo and navigate to /diffusers
+2. accelerate launch ./examples/text_to_image/train_text_to_image_lora.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --train_data_dir=/home/kevius/Data/yourdata/clean \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --num_train_epochs=100 \
+  --output_dir="your_data" \
+  --mixed_precision="bf16"
+3. To get the poisoned ouput just mix the poisoned data in with the clean data. 
+4. To generate the lora image modify prompts and lora destination in stable_diffusion_test.py and run it
 
-Next, we add perturbation to the images given a target concept (e.g. "cat"). `python3 data_extraction.py --directory selected_data/ --target_name cat --outdir OUTPUTDIR`. The code will output the perturbed images to the output folder.
+
+***Notes
+1. I would personally make a seperate conda environment for testing loras
+2. In a future revision of the code I plan to scrap letting the user pick their own concept 
+3. In a future revision of the code I plan to switch to LPIPS perturbation
+
 
 #### Requirements
 `torch=>2.0.0`, `diffusers>=0.20.0`
@@ -32,9 +61,6 @@ Next, we add perturbation to the images given a target concept (e.g. "cat"). `py
 
 #### How does this code differ from the APP on the Nightshade website?
 The goal of the code release is different from the Nightshade APP. This code base seeks to provide a reference, basic implementation for research experimentation whereas the APP is designed for people to nightshade their own images. As a result, there are two main differences. First, the Nightshade APP automatically extracts the source concept from a given image and selects a target concept for the image. This code base gives researchers the flexibility to select different poison target. Second, this code base uses Linf perturbation compared to LPIPS perturbation in the APP. Linf perturbation leads to more stable results but more visible perturbations.
-
-#### How do I test Nightshade?
-The easiest way to train the model is to use latent diffusion [source code](https://github.com/CompVis/stable-diffusion). We do not recommend using the Dreambooth/LORA finetuning code as it is designed for small-scale finetuning rather than full model training.
 
 ### Citation
 
@@ -47,4 +73,4 @@ The easiest way to train the model is to use latent diffusion [source code](http
 }
 ```
 
-For any questions with the code, please email shawnshan@cs.uchicago.edu. 
+For any questions with the code, please email supermax309@gmail.com
