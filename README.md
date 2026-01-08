@@ -5,12 +5,7 @@ This repo contains an implementation of the nightshade research code for scaling
 :warning: If you plan to use Nightshade to protect your own copyrighted content, please use our MacOS/Windows prototype on our [webpage](https://nightshade.cs.uchicago.edu/downloads.html). For details on the differences, please checkout the FAQ below. 
 
 ### OVERVIEW
-
-The repo contains code to generate Nightshade data for a source concept (e.g. "dog"). Specifically,
-
-1) The code first identify an optimal set of clean image/text pairs from a pool of clean data from the source concept. This step is designed to find a good set of text prompts to use for the poison. We select data from LAION dataset in our experiments (details in Section 5.2 of the paper).
-2) We optimize a perturbation on each of the selected candidate images.
-
+This is my implementation of nightshade for CS capstone at clemson. 
 ## HOW TO
 
 ### Prepare Data 
@@ -50,6 +45,7 @@ Create Lora
 
 
 ***Notes
+Things I will change If I ever revisit this repo
 1. I would personally make a seperate conda environment for testing loras
 2. In a future revision of the code I plan to scrap letting the user pick their own concept 
 3. In a future revision of the code I plan to switch to LPIPS perturbation
